@@ -16,6 +16,7 @@
   "author": "Rodrigo Boniatti",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-generator": "^4.15.5",
     "express-graphql": "^0.6.11",
