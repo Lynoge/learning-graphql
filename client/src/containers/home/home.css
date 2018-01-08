@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.post-container {
+  width: 80%;
+}
+
+.author-container {
+  max-width: 100px;
+  width: 20%;
+  margin-left: 10px;
+}

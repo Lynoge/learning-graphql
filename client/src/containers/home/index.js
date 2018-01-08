@@ -1,8 +1,8 @@
 import { compose, graphql } from 'react-apollo'
 import Home from './component'
-import { ADD_AUTHOR, GET_ALL_AUTHORS } from '../../store/queries/authors.js'
+import { ADD_AUTHOR, GET_HOME_INFORMATION } from '../../store/queries/authors.js'
 
 export default compose(
   graphql(ADD_AUTHOR, { name: 'addAuthorClient' }),
-  graphql(GET_ALL_AUTHORS, { props: ({ data }) => data })
+  graphql(GET_HOME_INFORMATION, { props: ({ data }) => data })
 )(Home)

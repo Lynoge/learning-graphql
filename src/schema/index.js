@@ -22,11 +22,34 @@ const AuthorType = new GraphQLObjectType({
   })
 })
 
+const TagType = new GraphQLObjectType({
+  name: 'Tag',
+  description: 'This represent an tag',
+  fields: () => ({
+    id: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    name: {
+      type: new GraphQLNonNull(GraphQLString)
+    }
+  })
+})
+
 const AuthorInputType = new GraphQLInputObjectType({
   name: 'AuthorInput',
   description: 'Input author payload',
   fields: () => ({
     username: {
+      type: new GraphQLNonNull(GraphQLString)
+    }
+  })
+})
+
+const TagInputType = new GraphQLInputObjectType({
+  name: 'TagInput',
+  description: 'Input tag payload',
+  fields: () => ({
+    name: {
       type: new GraphQLNonNull(GraphQLString)
     }
   })
@@ -76,6 +99,17 @@ const QueryRootType = new GraphQLObjectType({
   name: 'BlogAppSchema',
   description: 'Blog Application Schema Query Root',
   fields: () => ({
+    highlights: {
+      type: new GraphQLList(PostType),
+      description: 'List of all highlights',
+      resolve: () =>
+        models.Post.findAll({
+          where: {
+            highlight: true
+          },
+          raw: true
+        }).then(posts => posts)
+    },
     posts: {
       type: new GraphQLList(PostType),
       description: 'List of all posts',
@@ -91,6 +125,14 @@ const QueryRootType = new GraphQLObjectType({
         models.Author.findAll({
           raw: true
         }).then(authors => authors)
+    },
+    tags: {
+      type: new GraphQLList(TagType),
+      description: 'List of all tags',
+      resolve: () =>
+        models.Tag.findAll({
+          raw: true
+        }).then(tags => tags)
     }
   })
 })
@@ -123,6 +165,20 @@ const MutationRootType = new GraphQLObjectType({
           title: input.title,
           text: input.text,
           authorId: input.authorId,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        })
+    },
+    createTag: {
+      type: TagType,
+      args: {
+        input: {
+          type: new GraphQLNonNull(TagInputType)
+        }
+      },
+      resolve: async (rootValue, { input }) =>
+        models.Tag.create({
+          name: input.name,
           createdAt: new Date(),
           updatedAt: new Date()
         })

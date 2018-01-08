@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       authorId: {
         type: DataTypes.INTEGER,
         allowNull: false
-      }
+      },
+      highlight: DataTypes.BOOLEAN
     },
     {
       classMethods: {
