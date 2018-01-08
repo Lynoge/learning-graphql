@@ -6,8 +6,6 @@ import { ApolloProvider } from 'react-apollo'
 import registerServiceWorker from './registerServiceWorker'
 import store from './store'
 
-console.log(store)
-
 const WrappedApp = (
   <ApolloProvider client={store}>
     <App />

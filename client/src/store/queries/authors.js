@@ -8,3 +8,11 @@ export const GET_ALL_AUTHORS = gql`
     }
   }
 `
+
+export const ADD_AUTHOR = gql`
+  mutation addAuthorClient($username: String!) {
+    addAuthorClient(username: $username) @client {
+      authors
+    }
+  }
+`
