@@ -1,0 +1,10 @@
+.tag {
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 3px;
+  background-color: #FFF;
+}
+
+.tags-container {
+  margin-bottom: 30px;
+}

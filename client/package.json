@@ -16,6 +16,7 @@
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17",
+    "react-slick": "^0.16.0",
     "uuid": "^3.1.0"
   },
   "scripts": {

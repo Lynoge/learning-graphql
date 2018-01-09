@@ -1,17 +1,30 @@
+body {
+  background-color: #F6F8F9;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
 .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
 .post-container {
-  width: 80%;
+  margin-bottom: 60px;
 }
 
 .author-container {
-  max-width: 100px;
-  width: 20%;
-  margin-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: -20px;
+}
+
+.author-container > div {
+  margin-left: 20px;
 }
